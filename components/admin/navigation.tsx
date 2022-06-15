@@ -32,11 +32,12 @@ const AdminNavigation = () => {
 
   return (
     <div className="bg-gray-100 flex items-center overflow-scroll md:overflow-hidden">
-      {navItems.map((item) => (
+      {navItems.map((item, i) => (
         <NavItem
           {...item}
           onPressed={() => setSection(item.id)}
           active={section === item.id}
+          key={i}
         />
       ))}
     </div>

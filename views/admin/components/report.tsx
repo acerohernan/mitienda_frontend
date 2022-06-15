@@ -13,7 +13,11 @@ const AdminReport: React.FC = () => {
       </div>
       <div>
         {reportItems.map((report, i) => (
-          <ReportItem {...report} noBorder={reportItems.length - 1 === i} />
+          <ReportItem
+            {...report}
+            noBorder={reportItems.length - 1 === i}
+            key={i}
+          />
         ))}
       </div>
     </div>

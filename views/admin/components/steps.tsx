@@ -8,8 +8,8 @@ const AdminSteps: React.FC = () => {
         <h1 className="h3 mb-2">Completa tu cuenta</h1>
       </div>
       <div>
-        {stepsItems.map((step) => (
-          <StepItem {...step} />
+        {stepsItems.map((step, i) => (
+          <StepItem {...step} key={i} />
         ))}
       </div>
     </div>
