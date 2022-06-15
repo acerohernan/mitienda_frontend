@@ -1,16 +1,43 @@
-html,
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+span {
+  display: block;
 }
 
-* {
-  box-sizing: border-box;
+.logo {
+  @apply text-3xl font-bold;
+}
+
+.text-field {
+  @apply bg-slate-100 text-slate-600 font-medium text-lg p-2 w-full pl-3 outline-green-800 focus:bg-white;
+}
+
+.button {
+  @apply bg-darkgreen400 text-white w-full py-3 rounded-md;
+}
+
+.button-sm {
+  @apply bg-darkgreen400 text-white py-3 rounded-md;
+}
+
+.card {
+  @apply rounded-md p-6;
+}
+
+.h1 {
+  @apply text-3xl font-medium;
+}
+
+.h2 {
+  @apply text-2xl font-medium;
+}
+
+.h3 {
+  @apply text-xl font-medium;
 }
