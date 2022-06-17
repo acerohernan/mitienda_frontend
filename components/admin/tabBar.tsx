@@ -5,7 +5,7 @@ interface Item {
 
 interface AdminTabBarProps {
   currentPage: number;
-  handlePage: (page: number) => void;
+  handlePage: (_page: number) => void;
   items: Item[];
 }
 

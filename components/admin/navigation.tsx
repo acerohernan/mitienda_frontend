@@ -2,7 +2,7 @@ import { navItems } from '../../utils/data/admin';
 
 interface AdminNavigationProps {
   currentPage: number;
-  handlePage: (page: number) => void;
+  handlePage: (_page: number) => void;
 }
 
 const AdminNavigation: React.FC<AdminNavigationProps> = ({

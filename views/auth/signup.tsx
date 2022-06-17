@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { AiOutlineCheck } from 'react-icons/ai';
-import TextInputWithLabel from '../../components/form/fields/textinputWithLabel';
+import TextInputWithLabel from '../../components/form/fields/inputWithLabel';
 
 interface SignUpProps {}
 

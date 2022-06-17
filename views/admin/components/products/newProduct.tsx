@@ -1,5 +1,5 @@
 import { VscClose } from 'react-icons/vsc';
-import TextInputWithLabel from '../../../../components/form/fields/textinputWithLabel';
+import TextInputWithLabel from '../../../../components/form/fields/inputWithLabel';
 
 const NewProductModal = () => {
   return (

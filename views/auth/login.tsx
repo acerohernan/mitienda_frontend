@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import TextInputWithLabel from '../../components/form/fields/textinputWithLabel';
+import TextInputWithLabel from '../../components/form/fields/inputWithLabel';
 
 interface LoginScreenProps {}
 
