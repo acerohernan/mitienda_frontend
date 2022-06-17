@@ -15,7 +15,7 @@ span {
 }
 
 .text-field {
-  @apply bg-slate-100 text-slate-600 font-medium text-lg p-2 w-full pl-3 outline-green-800 focus:bg-white;
+  @apply bg-slate-100 text-slate-600 font-medium text-lg p-2 w-full pl-3 outline-green-800 focus:bg-white transition-all ease-in-out hover:bg-slate-200;
 }
 
 .label {
@@ -42,6 +42,10 @@ span {
   @apply max-w-7xl mx-auto;
 }
 
+.divider {
+  @apply w-full h-1 bg-transparent border-b;
+}
+
 .h1 {
   @apply text-3xl font-medium;
 }
@@ -52,4 +56,8 @@ span {
 
 .h3 {
   @apply text-xl font-medium;
+}
+
+.text-info {
+  @apply font-light;
 }

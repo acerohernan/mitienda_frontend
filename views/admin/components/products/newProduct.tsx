@@ -53,7 +53,7 @@ const NewProductModal = () => {
               placeholder: '$ 5000',
             }}
           />
-          <div className="w-full h-1 bg-transparent border-b" />
+          <div className="divider" />
           <button className="button">Agregar producto</button>
         </div>
       </section>

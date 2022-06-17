@@ -45,9 +45,9 @@ const TabBarItem: React.FC<TabBarItemProps> = ({
     <button
       className={`${
         active
-          ? 'text-darkgreen400 border-darkgreen400 border-b'
+          ? 'text-darkgreen400 border-darkgreen400 border-b-2'
           : ' text-slate-500'
-      } p-3 px-4 border-b hover:text-darkgreen400`}
+      } p-3 px-4 hover:text-darkgreen400`}
       onClick={onPressed}
     >
       {label}

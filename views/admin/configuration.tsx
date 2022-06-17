@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import AdminTabBar from '../../components/admin/tabBar';
+import AdminConfigAccount from './components/configuration/account';
+import AdminConfigCustomize from './components/configuration/customyze';
 import AdminConfigHome from './components/configuration/home';
 
 const tabBarItems = [
@@ -9,11 +11,11 @@ const tabBarItems = [
   },
   {
     label: 'Cuenta',
-    component: <AdminConfigHome />,
+    component: <AdminConfigAccount />,
   },
   {
     label: 'Personalización',
-    component: <AdminConfigHome />,
+    component: <AdminConfigCustomize />,
   },
   {
     label: 'Opciones del Checkout',
@@ -39,6 +41,7 @@ const AdminConfiguration = () => {
         handlePage={(page) => setPage(page)}
         items={tabBarItems}
       />
+      {tabBarItems[page - 1].component}
     </section>
   );
 };

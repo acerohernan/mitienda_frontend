@@ -10,7 +10,7 @@ const AdminNavigation: React.FC<AdminNavigationProps> = ({
   currentPage,
 }) => {
   return (
-    <nav className="bg-gray-100">
+    <nav className="bg-slate-100">
       <div className="screen-fit flex items-center overflow-scroll md:overflow-hidden">
         {navItems.map((item, i) => (
           <NavItem
@@ -42,7 +42,7 @@ const NavItem: React.FC<NavItemProps> = ({
     <button
       className={`flex items-center ${
         active && 'text-darkgreen400 border-darkgreen400 border-b'
-      } p-3 px-4 border-b text-lg transition-all ease-in-out hover:text-darkgreen400`}
+      } p-4 border-b-2 text-lg transition-all ease-in-out hover:text-darkgreen400`}
       onClick={onPressed}
     >
       {icon}

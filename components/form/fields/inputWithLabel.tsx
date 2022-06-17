@@ -1,3 +1,5 @@
+import CustomLabel from '../label';
+
 interface TextInputWithLabelProps {
   labelText: string;
   inputProps?: any;
@@ -15,12 +17,11 @@ const TextInputWithLabel: React.FC<TextInputWithLabelProps> = ({
 }) => {
   return (
     <div className="mb-6">
-      <span className="label mb-2">
-        {labelText}
-        {!optional ? (
-          <span className="text-darkgreen400 p-1 inline-block">*</span>
-        ) : null}
-      </span>
+      <CustomLabel
+        text={labelText}
+        optional={Boolean(optional)}
+        className="mb-2"
+      />
       {textarea ? (
         <textarea className="text-field" {...inputProps} />
       ) : (
