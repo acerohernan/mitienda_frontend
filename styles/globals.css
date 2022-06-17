@@ -18,6 +18,14 @@ span {
   @apply bg-slate-100 text-slate-600 font-medium text-lg p-2 w-full pl-3 outline-green-800 focus:bg-white;
 }
 
+.label {
+  @apply font-semibold block text-sm;
+}
+
+.label-bottom {
+  @apply text-slate-600 text-sm font-medium;
+}
+
 .button {
   @apply bg-darkgreen400 text-white w-full py-3 rounded-md;
 }
@@ -28,6 +36,10 @@ span {
 
 .card {
   @apply rounded-md p-6;
+}
+
+.screen-fit {
+  @apply max-w-7xl mx-auto;
 }
 
 .h1 {

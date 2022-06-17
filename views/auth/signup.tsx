@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { AiOutlineCheck } from 'react-icons/ai';
+import TextInputWithLabel from '../../components/form/fields/textinputWithLabel';
 
 interface SignUpProps {}
 
@@ -37,31 +38,31 @@ const SignUpScreen: React.FC<SignUpProps> = () => {
       </div>
       <form className="p-6 lg:max-w-lg lg:px-8">
         <h1 className="h1 mb-6">Crea tu cuenta gratis</h1>
-        <CustomInputWithLabel
+        <TextInputWithLabel
           labelText="E-mail"
           bottomMessage="Coloca un e-mail de uso frequente. Nos comunicaremos por esta vía"
           inputProps={{ placeholder: 'tucomercio@gmail.com' }}
         />
-        <CustomInputWithLabel
+        <TextInputWithLabel
           labelText="Repetir e-mail"
           inputProps={{ placeholder: 'tucomercio@gmail.com' }}
         />
-        <CustomInputWithLabel
+        <TextInputWithLabel
           labelText="Contraseña"
           inputProps={{ placeholder: '******', type: 'password' }}
           bottomMessage="Al menos 8 caracteres"
         />
-        <CustomInputWithLabel
+        <TextInputWithLabel
           labelText="Nombre de su tienda"
           inputProps={{ placeholder: 'micormercio', type: 'password' }}
           bottomMessage="Tu dirección será: http://localhost/"
         />
-        <CustomInputWithLabel
+        <TextInputWithLabel
           labelText="País"
           inputProps={{ placeholder: 'Selecciona un país', type: 'password' }}
           bottomMessage="Configuraremos la moneda de acuerdo al país indicado"
         />
-        <CustomInputWithLabel
+        <TextInputWithLabel
           labelText="Número de WhastApp"
           inputProps={{ placeholder: ' +54 | 9114444000', type: 'password' }}
           bottomMessage="Código país + código de area + teléfono. Ej: +54 | 9114444000"
@@ -74,33 +75,6 @@ const SignUpScreen: React.FC<SignUpProps> = () => {
         </Link>
       </form>
     </main>
-  );
-};
-
-interface CustomInputProps {
-  labelText: string;
-  inputProps?: any;
-  bottomMessage?: string;
-}
-
-const CustomInputWithLabel: React.FC<CustomInputProps> = ({
-  labelText,
-  inputProps,
-  bottomMessage,
-}) => {
-  return (
-    <div className="mb-6">
-      <span className="font-semibold block text-sm mb-2">
-        {labelText}
-        <span className="text-darkgreen400 p-1">*</span>
-      </span>
-      <input type="text" className="text-field" {...inputProps} />
-      {bottomMessage ? (
-        <span className="block text-slate-600 text-sm mt-2 font-medium">
-          {bottomMessage}
-        </span>
-      ) : null}
-    </div>
   );
 };
 

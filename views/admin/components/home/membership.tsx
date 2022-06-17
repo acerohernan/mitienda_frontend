@@ -1,6 +1,6 @@
 const AdminMenbership = () => {
   return (
-    <div className="card border-darkgreen100 border-2 m-2">
+    <div className="card border-darkgreen100 border-2">
       <h1 className="h3">Tu Plan</h1>
       <div className="flex items-center justify-between my-3 mb-4">
         <span className="bg-darkgreen100 text-darkgreen400 font-medium p-1">

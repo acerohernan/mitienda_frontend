@@ -1,46 +1,27 @@
-import { useState } from 'react';
-import { BiCube } from 'react-icons/bi';
-import { FiHome } from 'react-icons/fi';
-import { HiOutlineShare } from 'react-icons/hi';
-import { VscSettingsGear } from 'react-icons/vsc';
+import { navItems } from '../../utils/data/admin';
 
-const navItems = [
-  {
-    id: 1,
-    label: 'Inicio',
-    icon: <FiHome size={23} />,
-  },
-  {
-    id: 2,
-    label: 'Productos',
-    icon: <BiCube size={23} />,
-  },
-  {
-    id: 3,
-    label: 'Configuración',
-    icon: <VscSettingsGear size={23} />,
-  },
-  {
-    id: 4,
-    label: 'Promocionar',
-    icon: <HiOutlineShare size={23} />,
-  },
-];
+interface AdminNavigationProps {
+  currentPage: number;
+  handlePage: (page: number) => void;
+}
 
-const AdminNavigation = () => {
-  const [section, setSection] = useState(1);
-
+const AdminNavigation: React.FC<AdminNavigationProps> = ({
+  handlePage,
+  currentPage,
+}) => {
   return (
-    <div className="bg-gray-100 flex items-center overflow-scroll md:overflow-hidden">
-      {navItems.map((item, i) => (
-        <NavItem
-          {...item}
-          onPressed={() => setSection(item.id)}
-          active={section === item.id}
-          key={i}
-        />
-      ))}
-    </div>
+    <nav className="bg-gray-100">
+      <div className="screen-fit flex items-center overflow-scroll md:overflow-hidden">
+        {navItems.map((item, i) => (
+          <NavItem
+            {...item}
+            onPressed={() => handlePage(item.id)}
+            active={currentPage === item.id}
+            key={i}
+          />
+        ))}
+      </div>
+    </nav>
   );
 };
 

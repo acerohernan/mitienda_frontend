@@ -1,5 +1,38 @@
 import { AiOutlineShareAlt } from 'react-icons/ai';
-import { FiShoppingBag } from 'react-icons/fi';
+import { BiCube } from 'react-icons/bi';
+import { FiHome, FiShoppingBag } from 'react-icons/fi';
+import { HiOutlineShare } from 'react-icons/hi';
+import { VscSettingsGear } from 'react-icons/vsc';
+import AdminConfiguration from '../../views/admin/configuration';
+import AdminHomeScreen from '../../views/admin/home';
+import AdminProductsScreen from '../../views/admin/products';
+
+export const navItems = [
+  {
+    id: 1,
+    label: 'Inicio',
+    icon: <FiHome size={23} />,
+    component: <AdminHomeScreen />,
+  },
+  {
+    id: 2,
+    label: 'Productos',
+    icon: <BiCube size={23} />,
+    component: <AdminProductsScreen />,
+  },
+  {
+    id: 3,
+    label: 'Configuración',
+    icon: <VscSettingsGear size={23} />,
+    component: <AdminConfiguration />,
+  },
+  {
+    id: 4,
+    label: 'Promocionar',
+    icon: <HiOutlineShare size={23} />,
+    component: <AdminHomeScreen />,
+  },
+];
 
 export const reportItems = [
   {
