@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { FiExternalLink, FiHelpCircle } from 'react-icons/fi';
+import { FiExternalLink } from 'react-icons/fi';
+import { MdOutlineLogout } from 'react-icons/md';
 
 const AdminHeader = () => {
   return (
@@ -20,7 +21,7 @@ const AdminHeader = () => {
           <span className="pl-2 hover:underline">Ayuda</span>
         </a> */}
           <a className="flex items-center p-2 cursor-pointer">
-            <FiHelpCircle size={20} />
+            <MdOutlineLogout size={20} />
             <span className="pl-2 hover:underline">Salir</span>
           </a>
         </div>

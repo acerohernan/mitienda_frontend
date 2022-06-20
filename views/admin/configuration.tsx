@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import AdminTabBar from '../../components/admin/tabBar';
 import AdminConfigAccount from './components/configuration/account';
+import AdminConfigAdvanced from './components/configuration/advanced';
+import AdminConfigCheckout from './components/configuration/checkout';
 import AdminConfigCustomize from './components/configuration/customyze';
 import AdminConfigHome from './components/configuration/home';
 
@@ -19,15 +21,11 @@ const tabBarItems = [
   },
   {
     label: 'Opciones del Checkout',
-    component: <AdminConfigHome />,
+    component: <AdminConfigCheckout />,
   },
   {
     label: 'Opciones avanzadas',
-    component: <AdminConfigHome />,
-  },
-  {
-    label: 'Facebook Shops',
-    component: <AdminConfigHome />,
+    component: <AdminConfigAdvanced />,
   },
 ];
 

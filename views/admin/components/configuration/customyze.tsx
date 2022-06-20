@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { BsTrash } from 'react-icons/bs';
 import CustomLabel from '../../../../components/form/label';
+import AdminSectionHeader from './sectionHeader';
 
 const AdminConfigCustomize = () => {
   return (
-    <section className="screen-fit p-4 xl:px-0 pt-10">
+    <section className="screen-fit p-4 xl:px-0">
+      <AdminSectionHeader title="Diseño" />
       <div className="max-w-md">
-        <h1 className="h2">Diseño</h1>
         <p className="text-info mt-3">Personaliza tu cuenta</p>
         <div className="mt-10">
           <h2 className="font-semibold mb-3">Logo e images de cabecera</h2>
@@ -36,7 +37,7 @@ const AdminConfigCustomize = () => {
             </p>
             <StructureCards />
           </div>
-          <button className="button mt-6">Guardar</button>
+          <button className="button mt-6 md:hidden">Guardar</button>
         </div>
       </div>
     </section>
@@ -92,9 +93,9 @@ const ColorStack: React.FC = () => {
       {COLORS.map((item, i) => (
         <button
           key={i}
-          className={`w-10 h-10 rounded-lg border-4 border-white ${
-            color === i ? item.border : ''
-          } ${item.bg} mr-3`}
+          className={`w-12 h-12 rounded-lg border-4 e ${
+            color === i ? item.border : 'border-white'
+          }  ${item.bg} mr-3`}
           onClick={() => setColor(i)}
         />
       ))}

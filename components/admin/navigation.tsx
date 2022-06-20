@@ -11,7 +11,7 @@ const AdminNavigation: React.FC<AdminNavigationProps> = ({
 }) => {
   return (
     <nav className="bg-slate-100">
-      <div className="screen-fit flex items-center overflow-scroll md:overflow-hidden">
+      <div className="screen-fit flex items-center overflow-scroll sm:overflow-hidden">
         {navItems.map((item, i) => (
           <NavItem
             {...item}

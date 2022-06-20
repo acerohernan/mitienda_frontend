@@ -16,7 +16,7 @@ const AdminTabBar: React.FC<AdminTabBarProps> = ({
 }) => {
   return (
     <nav className="bg-white">
-      <div className="screen-fit flex overflow-scroll lg:overflow-hidden">
+      <div className="screen-fit flex overflow-scroll sm:overflow-hidden">
         {items.map((item, i) => (
           <TabBarItem
             {...item}

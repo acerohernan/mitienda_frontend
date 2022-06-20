@@ -1,15 +1,13 @@
 import Image from 'next/image';
 import TextInputWithLabel from '../../../../components/form/fields/inputWithLabel';
+import AdminSectionHeader from './sectionHeader';
 
 const AdminConfigHome = () => {
   return (
     <section className="screen-fit p-4 xl:px-0">
       <div>
-        <div className="mb-6 mt-6 max-w-3xl md:flex md:items-center md:justify-between md:mb-14">
-          <h1 className="h2">Información del comercio</h1>
-          <button className="hidden md:block button-sm px-5">Guardar</button>
-        </div>
-        <div className="md:grid md:grid-cols-[448px_auto] max-w-3xl items-start gap-10">
+        <AdminSectionHeader title="Información del comercio" />
+        <div className="md:grid md:grid-cols-[448px_auto] max-w-4xl items-start gap-10">
           <div className="max-w-md">
             <p className="font-light lg:mb-4">
               La ven tus clientes en tu sitio. Te dejamor una imagen como
@@ -97,7 +95,7 @@ const AdminConfigHome = () => {
         </div>
         <div className="divider" />
         <h1 className="h2 mb-6 mt-10">Redes sociales</h1>
-        <div className="md:grid md:grid-cols-[448px_auto] max-w-3xl items-start gap-10">
+        <div className="md:grid md:grid-cols-[448px_auto] max-w-4xl items-start gap-10">
           <div className="max-w-md">
             <p className="font-light lg:mb-4">
               Comparte las redes sociales en tu negocio fácilmente. Solo serán

@@ -6,6 +6,7 @@ import { VscSettingsGear } from 'react-icons/vsc';
 import AdminConfiguration from '../../views/admin/configuration';
 import AdminHomeScreen from '../../views/admin/home';
 import AdminProductsScreen from '../../views/admin/products';
+import AdminPromote from '../../views/admin/promote';
 
 export const navItems = [
   {
@@ -30,7 +31,7 @@ export const navItems = [
     id: 4,
     label: 'Promocionar',
     icon: <HiOutlineShare size={23} />,
-    component: <AdminHomeScreen />,
+    component: <AdminPromote />,
   },
 ];
 

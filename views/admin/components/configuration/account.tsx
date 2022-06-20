@@ -1,11 +1,12 @@
 import TextInputWithLabel from '../../../../components/form/fields/inputWithLabel';
+import AdminSectionHeader from './sectionHeader';
 
 const AdminConfigAccount = () => {
   return (
     <div className="screen-fit p-4 xl:px-0">
       <form>
+        <AdminSectionHeader title="Información de la cuenta" />
         <div className="max-w-md mt-6">
-          <h1 className="h2 mb-6">Información de la cuenta</h1>
           <TextInputWithLabel
             labelText="Email"
             inputProps={{
