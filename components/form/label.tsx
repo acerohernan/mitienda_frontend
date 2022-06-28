@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface LabelProps {
   text: string;
   optional?: boolean;

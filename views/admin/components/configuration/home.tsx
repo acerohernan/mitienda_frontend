@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import TextInputWithLabel from '../../../../components/form/fields/inputWithLabel';
+import TextInputWithLabel from '../../../../components/form/inputWithLabel';
 import AdminSectionHeader from './sectionHeader';
 
 const AdminConfigHome = () => {

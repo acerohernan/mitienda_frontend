@@ -18,6 +18,10 @@ span {
   @apply bg-slate-100 text-slate-600 font-medium text-lg p-2 w-full pl-3 outline-green-800 focus:bg-white transition-all ease-in-out hover:bg-slate-200;
 }
 
+.text-field-error {
+  @apply bg-slate-100 text-slate-600 font-medium text-lg p-2 w-full pl-3 outline-red-500 focus:bg-white transition-all ease-in-out hover:bg-slate-200;
+}
+
 .label {
   @apply font-semibold block text-sm;
 }
@@ -27,11 +31,19 @@ span {
 }
 
 .button {
-  @apply bg-darkgreen400 text-white w-full py-3 rounded-md;
+  @apply bg-darkgreen400 text-white w-full py-3 rounded-md transition-opacity ease-in-out duration-300 disabled:opacity-60;
 }
 
 .button-sm {
-  @apply bg-darkgreen400 text-white py-3 rounded-md;
+  @apply bg-darkgreen400 text-white py-3 rounded-md transition-opacity ease-in-out duration-300 disabled:opacity-60;
+}
+
+.link {
+  @apply text-darkgreen400 hover:underline;
+}
+
+.link-sm {
+  @apply text-sm text-darkgreen400 hover:underline;
 }
 
 .card {

@@ -1,15 +1,32 @@
 import type { AppProps } from 'next/app';
 import '../styles/globals.css';
-import { NextPageWithLayout } from './page';
 
-interface AppPropsWithLayout extends AppProps {
-  Component: NextPageWithLayout;
-}
+import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor, store } from '../store';
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout || ((page) => page);
+import 'react-toastify/dist/ReactToastify.css';
 
-  return getLayout(<Component {...pageProps} />);
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <Provider store={store}>
+      <PersistGate loading={<p>Loading...</p>} persistor={persistor}>
+        <Component {...pageProps} />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </PersistGate>
+    </Provider>
+  );
 }
 
 export default MyApp;

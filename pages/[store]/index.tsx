@@ -7,6 +7,8 @@ const Store: NextPageWithLayout = () => {
   const {
     query: { store },
   } = useRouter();
+
+  console.log(store);
   return <StoreScreen />;
 };
 

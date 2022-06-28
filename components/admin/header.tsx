@@ -1,8 +1,19 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { FiExternalLink } from 'react-icons/fi';
 import { MdOutlineLogout } from 'react-icons/md';
+import { useAppDispatch } from '../../store/hooks';
+import { logout } from '../../store/user/actions';
 
 const AdminHeader = () => {
+  const dispatch = useAppDispatch();
+  const { push } = useRouter();
+
+  function handleLogout() {
+    dispatch(logout());
+    push('/login');
+  }
+
   return (
     <header>
       <div className="p-4 flex items-center justify-between border-b border-gray-200 screen-fit">
@@ -16,14 +27,13 @@ const AdminHeader = () => {
           </Link>
         </div>
         <div className="flex items-center">
-          {/* <a className="flex items-center p-2 cursor-pointer">
-          <FiHelpCircle size={20} />
-          <span className="pl-2 hover:underline">Ayuda</span>
-        </a> */}
-          <a className="flex items-center p-2 cursor-pointer">
+          <button
+            className="flex items-center p-2 cursor-pointer"
+            onClick={handleLogout}
+          >
             <MdOutlineLogout size={20} />
             <span className="pl-2 hover:underline">Salir</span>
-          </a>
+          </button>
         </div>
       </div>
     </header>

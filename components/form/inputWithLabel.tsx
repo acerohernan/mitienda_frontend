@@ -1,9 +1,11 @@
-import CustomLabel from '../label';
+import CustomBottomMessage from './bottomMessage';
+import CustomLabel from './label';
 
 interface TextInputWithLabelProps {
   labelText: string;
   inputProps?: any;
   bottomMessage?: string;
+  errorMsg?: string;
   optional?: boolean;
   textarea?: boolean;
 }
@@ -12,6 +14,7 @@ const TextInputWithLabel: React.FC<TextInputWithLabelProps> = ({
   labelText,
   inputProps,
   bottomMessage,
+  errorMsg,
   optional,
   textarea,
 }) => {
@@ -25,11 +28,13 @@ const TextInputWithLabel: React.FC<TextInputWithLabelProps> = ({
       {textarea ? (
         <textarea className="text-field" {...inputProps} />
       ) : (
-        <input type="text" className="text-field" {...inputProps} />
+        <input
+          type="text"
+          className={errorMsg ? 'text-field-error' : 'text-field'}
+          {...inputProps}
+        />
       )}
-      {bottomMessage ? (
-        <span className="label-bottom mt-2">{bottomMessage}</span>
-      ) : null}
+      <CustomBottomMessage text={bottomMessage} errorMsg={errorMsg} />
     </div>
   );
 };
