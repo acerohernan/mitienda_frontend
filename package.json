@@ -7,7 +7,7 @@
   "homepage": "https://github.com/MiTiendaPe/Frontend",
   "license": "MIT",
   "engines": {
-    "node": ">=18.3.0",
+    "node": ">=16.15.1",
     "yarn": ">=1.22.18",
     "npm": "please-use-yarn"
   },
