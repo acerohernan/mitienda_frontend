@@ -1,4 +1,3 @@
-import React from 'react';
 import LoaderSpin from './loader';
 
 interface ButtonProps {
@@ -6,7 +5,7 @@ interface ButtonProps {
   small?: boolean;
   loading?: boolean;
   submit?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onClick?: () => void;
   text: string;
 }
 

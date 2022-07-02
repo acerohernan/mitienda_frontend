@@ -8,29 +8,33 @@ import {
   VerfiyCodeFormValues,
 } from './types';
 
-const signUp = (data: SignUpFormValues) =>
-  fetchData().post(`${BASE_URL}/user/auth/signup`, data);
+const headers = () => ({
+  'Content-Type': 'application/json',
+  Accept: 'application/json',
+});
 
-const login = (data: LoginFormValues) =>
-  fetchData().post(`${BASE_URL}/user/auth/login`, data);
+export const signUp = (data: SignUpFormValues) =>
+  fetchData.post(`${BASE_URL}/user/auth/signup`, data, { headers: headers() });
 
-const forgotStore = (data: ForgotStoreFormValues) =>
-  fetchData().post(`${BASE_URL}/user/auth/forgot-store`, data);
+export const login = (data: LoginFormValues) =>
+  fetchData.post(`${BASE_URL}/user/auth/login`, data, { headers: headers() });
 
-const forgotPassword = (data: ForgotPasswordFormValues) =>
-  fetchData().post(`${BASE_URL}/user/auth/forgot-password`, data);
+export const forgotStore = (data: ForgotStoreFormValues) =>
+  fetchData.post(`${BASE_URL}/user/auth/forgot-store`, data, {
+    headers: headers(),
+  });
 
-const verifyCode = (data: VerfiyCodeFormValues) =>
-  fetchData().post(`${BASE_URL}/user/auth/verify-code`, data);
+export const forgotPassword = (data: ForgotPasswordFormValues) =>
+  fetchData.post(`${BASE_URL}/user/auth/forgot-password`, data, {
+    headers: headers(),
+  });
 
-const changePassword = (data: ChangePasswordFormValues) =>
-  fetchData().post(`${BASE_URL}/user/auth/change-password`, data);
+export const verifyCode = (data: VerfiyCodeFormValues) =>
+  fetchData.post(`${BASE_URL}/user/auth/verify-code`, data, {
+    headers: headers(),
+  });
 
-export default {
-  signUp,
-  login,
-  forgotStore,
-  forgotPassword,
-  verifyCode,
-  changePassword,
-};
+export const changePassword = (data: ChangePasswordFormValues) =>
+  fetchData.post(`${BASE_URL}/user/auth/change-password`, data, {
+    headers: headers(),
+  });

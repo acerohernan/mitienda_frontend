@@ -1,32 +1,32 @@
 import axios from 'axios';
-export const BASE_URL = 'http://localhost:5000/api/v1';
+export const BASE_URL = 'https://mitienda-backend.herokuapp.com/api/v1';
 
 //Endpoints
-import user from './user';
+import * as store from './store';
+import * as user from './user';
 
-export function fetchData() {
-  const defaultOptions = {
-    baseUrl: BASE_URL,
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-  };
+export const fetchData = axios;
 
-  //let token = localStorage.get('token');
-  let instance = axios.create(defaultOptions);
+fetchData.interceptors.response.use(
+  undefined,
+  function axiosRetryInterceptor(err) {
+    switch (err.response.status) {
+      case 401:
+        if (!!localStorage.getItem('token')) {
+          localStorage.removeItem('token');
+        }
+        break;
+      default:
+        break;
+    }
 
-  /* if (Boolean(token)) {
-    instance.interceptors.request.use(function (config: any) {
-      config.headers.Authorization = `Bearer ${token}`;
-    });
-  } */
-
-  return instance;
-}
+    return Promise.reject(err);
+  }
+);
 
 const API = {
   user,
+  store,
 };
 
 export default API;

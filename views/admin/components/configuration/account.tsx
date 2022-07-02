@@ -19,7 +19,7 @@ const AdminConfigAccount = () => {
         <div className="divider" />
         <div className="max-w-md mt-10">
           <h1 className="h2 mb-6">Deshabilitar cuenta</h1>
-          <p className="text-info">
+          <p className="text-info mb-4">
             Tu cuenta no estará visible para tus clientes. Sin embargo podrás
             continuar accediendo al Panel Administrador.
           </p>

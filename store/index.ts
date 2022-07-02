@@ -11,16 +11,18 @@ import {
 } from 'redux-persist';
 import storage from './storage';
 
+import storeReducer from './store';
 import userReducer from './user';
 
 const reducer = combineReducers({
   user: userReducer,
+  store: storeReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user'],
+  whitelist: ['user', 'store'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);

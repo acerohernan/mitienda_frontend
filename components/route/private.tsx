@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useAppSelector } from '../../store/hooks';
 
 interface PrivateRouteProps {
-  children: React.FC;
+  children: React.CElement<any, any>;
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
@@ -11,7 +11,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
   const { push } = useRouter();
 
   useEffect(() => {
-    if (!!token) push('/login');
+    if (!token) push('/login');
   }, []);
 
   return <>{children}</>;

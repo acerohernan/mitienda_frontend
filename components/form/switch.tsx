@@ -1,9 +1,9 @@
 interface SwitchProps {
   selected: boolean;
-  onChange: (bool: boolean) => void;
+  onChange: () => void;
 }
 
-const CustomSwitch = () => {
+const CustomSwitch: React.FC<SwitchProps> = () => {
   return <div></div>;
 };
 

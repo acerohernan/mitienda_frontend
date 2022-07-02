@@ -1,15 +1,14 @@
-import { useRouter } from 'next/router';
 import PrimaryLayout from '../../components/layouts/primary';
+import PrivateRoute from '../../components/route/private';
 import StoreScreen from '../../views/store';
 import { NextPageWithLayout } from '../page';
 
 const Store: NextPageWithLayout = () => {
-  const {
-    query: { store },
-  } = useRouter();
-
-  console.log(store);
-  return <StoreScreen />;
+  return (
+    <PrivateRoute>
+      <StoreScreen />
+    </PrivateRoute>
+  );
 };
 
 export default Store;

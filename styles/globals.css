@@ -6,6 +6,10 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+a {
+  cursor: pointer;
+}
+
 span {
   display: block;
 }
@@ -15,11 +19,11 @@ span {
 }
 
 .text-field {
-  @apply bg-slate-100 text-slate-600 font-medium text-lg p-2 w-full pl-3 outline-green-800 focus:bg-white transition-all ease-in-out hover:bg-slate-200;
+  @apply bg-slate-100 text-black font-light p-2 w-full pl-3 outline-green-800 focus:bg-white transition-all ease-in-out hover:bg-slate-200;
 }
 
 .text-field-error {
-  @apply bg-slate-100 text-slate-600 font-medium text-lg p-2 w-full pl-3 outline-red-500 focus:bg-white transition-all ease-in-out hover:bg-slate-200;
+  @apply bg-slate-100 text-black font-light p-2 w-full pl-3 outline-red-500 focus:bg-white transition-all ease-in-out hover:bg-slate-200;
 }
 
 .label {
@@ -72,4 +76,16 @@ span {
 
 .text-info {
   @apply font-light;
+}
+
+.domine-family {
+  font-family: 'Domine', serif;
+}
+
+@media screen and (min-width: 768px) {
+  .hero-section {
+    height: 70vh;
+    align-items: center;
+    justify-content: center;
+  }
 }

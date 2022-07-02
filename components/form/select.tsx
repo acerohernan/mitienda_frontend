@@ -27,7 +27,7 @@ const CustomSelect: React.FC<SelectProps> = ({
     <div className="relative">
       <div className="relative text-slate-600">
         <button
-          className={`${className} appearance-none group text-start bg-slate-100 text-slate-600 font-medium text-lg p-2 w-full pl-3 border-2 border-white rounded ${
+          className={`${className} appearance-none group text-start bg-slate-100 text-black font-light p-2 w-full pl-3 border-2 border-white rounded ${
             open && 'border-green-800'
           }`}
           onClick={handleOpen}

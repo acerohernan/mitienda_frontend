@@ -51,7 +51,6 @@ const SignUpScreen: React.FC = () => {
       const response = await API.user.login({
         email: form.email,
         password: form.password,
-        store: form.store,
       });
       dispatch(login(response.data.data));
       setLoading(false);
@@ -71,7 +70,9 @@ const SignUpScreen: React.FC = () => {
   return (
     <main className="lg:grid-cols-[auto_512px] lg:grid min-h-screen max-h-screen ">
       <div className="bg-darkgreen900 p-6 lg:px-10  overflow-hidden pt-12">
-        <h1 className="logo text-white">MITIENDA</h1>
+        <Link href="/">
+          <a className="logo text-white">MITIENDA</a>
+        </Link>
         <h2 className="text-white font-semibold text-lg mt-4 lg:text-4xl lg:mt-10">
           Comienza a vender online gratis y a tu manera
         </h2>

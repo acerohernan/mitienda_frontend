@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useAppSelector } from '../../store/hooks';
 
 interface PublicRouteProps {
-  children: React.FC;
+  children: React.CElement<any, any>;
 }
 
 const PublicRoute: React.FC<PublicRouteProps> = ({ children }) => {
