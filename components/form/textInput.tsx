@@ -12,10 +12,8 @@ const CustomTextInput: React.FC<InputProps> = ({
   error,
 }) => {
   return (
-    <div className="flex bg-slate-100 items-center">
-      {children && (
-        <div className="p-2 px-4 text-lg bg-slate-200">{children}</div>
-      )}
+    <div className="flex bg-slate-100 items-center w-full">
+      {children && <div className="p-2">{children}</div>}
       <input
         type="text"
         className={error ? 'text-field-error' : 'text-field'}

@@ -26,7 +26,7 @@ const TextInputWithLabel: React.FC<TextInputWithLabelProps> = ({
         className="mb-2"
       />
       {textarea ? (
-        <textarea className="text-field" {...inputProps} />
+        <textarea className="text-field -mb-2" {...inputProps} />
       ) : (
         <input
           type="text"
