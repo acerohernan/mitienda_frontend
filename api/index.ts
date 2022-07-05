@@ -1,10 +1,9 @@
 import axios from 'axios';
-export const BASE_URL = 'http://localhost:5000/api/v1';
-export const BASE_URL_PROD = 'https://mitienda-backend.herokuapp.com/api/v1';
-
 //Endpoints
 import * as store from './store';
 import * as user from './user';
+export const BASE_URL_TEST = 'http://localhost:5000/api/v1';
+export const BASE_URL = 'https://mitienda-backend.herokuapp.com/api/v1';
 
 export const fetchData = axios;
 

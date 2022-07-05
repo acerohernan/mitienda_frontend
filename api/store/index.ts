@@ -1,5 +1,8 @@
 import { BASE_URL, fetchData } from '..';
-import { UpdateStoreInformationFormValues } from './types';
+import {
+  CreateProductFormValues,
+  UpdateStoreInformationFormValues,
+} from './types';
 
 const headers = () => {
   const token = JSON.parse(
@@ -13,7 +16,6 @@ const headers = () => {
   };
 };
 
-//GET
 export const getInformation = () =>
   fetchData.get(`${BASE_URL}/store/get-information`, { headers: headers() });
 
@@ -31,7 +33,11 @@ export const getCheckoutOptions = () =>
     headers: headers(),
   });
 
-//PUT
+export const createProduct = (data: CreateProductFormValues) =>
+  fetchData.post(`${BASE_URL}/store/create-product`, data, {
+    headers: headers(),
+  });
+
 export const updateStoreInformation = (
   data: UpdateStoreInformationFormValues
 ) =>

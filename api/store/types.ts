@@ -1,3 +1,5 @@
+import { IVariant } from '../../interfaces/product.interface';
+
 export interface UpdateStoreInformationFormValues {
   slug: string;
   name: string;
@@ -15,4 +17,15 @@ export interface UpdateStoreInformationFormValues {
   type: string | null;
   logoUrl: string | null;
   bannerUrl: string | null;
+}
+
+export interface CreateProductFormValues {
+  img: File | null;
+  name: string;
+  description: string;
+  type: number;
+  price: number;
+  category: string;
+  top: boolean;
+  variants: IVariant[];
 }

@@ -14,11 +14,11 @@ const Switch: React.FC<SwitchProps> = ({
 }) => {
   if (!!label) {
     return (
-      <div className="flex items-center">
-        <label className={styles.switch}>
-          <input type="checkbox" checked={selected} />
+      <div className="flex items-center" onClick={onChange}>
+        <div className={styles.switch}>
+          <input type="checkbox" checked={selected} onChange={onChange} />
           <span className={styles.slider}></span>
-        </label>
+        </div>
         <span className=" ml-2 font-light">{label}</span>
       </div>
     );
@@ -26,7 +26,7 @@ const Switch: React.FC<SwitchProps> = ({
 
   return (
     <label className={styles.switch}>
-      <input type="checkbox" checked={selected} />
+      <input type="checkbox" checked={selected} {...inputProps} />
       <span className={styles.slider}></span>
     </label>
   );
