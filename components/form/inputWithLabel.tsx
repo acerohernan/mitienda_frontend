@@ -1,5 +1,7 @@
+import { ReactElement } from 'react';
 import CustomBottomMessage from './bottomMessage';
 import CustomLabel from './label';
+import CustomTextInput from './textInput';
 
 interface TextInputWithLabelProps {
   labelText: string;
@@ -8,6 +10,7 @@ interface TextInputWithLabelProps {
   errorMsg?: string;
   optional?: boolean;
   textarea?: boolean;
+  children?: ReactElement;
 }
 
 const TextInputWithLabel: React.FC<TextInputWithLabelProps> = ({
@@ -17,6 +20,7 @@ const TextInputWithLabel: React.FC<TextInputWithLabelProps> = ({
   errorMsg,
   optional,
   textarea,
+  children,
 }) => {
   return (
     <div className="mb-6">
@@ -28,11 +32,9 @@ const TextInputWithLabel: React.FC<TextInputWithLabelProps> = ({
       {textarea ? (
         <textarea className="text-field -mb-2" {...inputProps} />
       ) : (
-        <input
-          type="text"
-          className={errorMsg ? 'text-field-error' : 'text-field'}
-          {...inputProps}
-        />
+        <CustomTextInput error={!!errorMsg} inputProps={inputProps}>
+          {children}
+        </CustomTextInput>
       )}
       <CustomBottomMessage text={bottomMessage} errorMsg={errorMsg} />
     </div>

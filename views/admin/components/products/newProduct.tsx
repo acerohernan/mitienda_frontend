@@ -1,13 +1,20 @@
 import produce from 'immer';
-import { useState } from 'react';
+import Image from 'next/image';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { VscClose } from 'react-icons/vsc';
+import { VscClose, VscEdit, VscTrash } from 'react-icons/vsc';
+import { toast } from 'react-toastify';
+import API from '../../../../api';
 import { CreateProductFormValues } from '../../../../api/store/types';
+import Button from '../../../../components/form/button';
 import TextInputWithLabel from '../../../../components/form/inputWithLabel';
 import CustomLabel from '../../../../components/form/label';
+import CustomSelect from '../../../../components/form/select';
 import Switch from '../../../../components/form/switch';
+import { PRODUCT_TYPES } from '../../../../constants/products';
 import { IVariant } from '../../../../interfaces/product.interface';
+import handleRequestError from '../../../../utils/error';
 import VariantForm from './variantForm';
 
 interface NewProductModalProps {
@@ -15,8 +22,12 @@ interface NewProductModalProps {
 }
 
 const NewProductModal: React.FC<NewProductModalProps> = ({ handleModal }) => {
+  const [loading, setLoading] = useState(false);
   const [variants, setVariants] = useState<IVariant[]>([]);
   const [top, setTop] = useState(false);
+  const [previewImg, setPreviewImg] = useState('');
+
+  const fileInputRef = useRef<any>(null);
 
   const {
     register,
@@ -25,9 +36,20 @@ const NewProductModal: React.FC<NewProductModalProps> = ({ handleModal }) => {
     formState: { errors },
   } = useForm<CreateProductFormValues>();
 
-  function onSubmit(data: CreateProductFormValues) {
-    data.variants = variants;
-    console.log(data);
+  async function onSubmit(form: CreateProductFormValues) {
+    setLoading(true);
+    form.variants = variants;
+    form.type = Number(form.type);
+    try {
+      await API.store.products.create(form);
+      toast.success('Se creó correctamente el producto');
+      setLoading(false);
+      handleModal(false);
+    } catch (e: any) {
+      setLoading(false);
+      const err = handleRequestError(e);
+      toast.error(err);
+    }
   }
 
   function handleAddVariant() {
@@ -38,12 +60,12 @@ const NewProductModal: React.FC<NewProductModalProps> = ({ handleModal }) => {
       toSelect: 1,
       options: [
         {
-          name: '',
+          title: '',
           price: '',
           show: true,
         },
         {
-          name: '',
+          title: '',
           price: '',
           show: true,
         },
@@ -55,6 +77,15 @@ const NewProductModal: React.FC<NewProductModalProps> = ({ handleModal }) => {
         state.push(newVariant);
       })
     );
+  }
+
+  function handleDeleteVariant(index: number) {
+    return () =>
+      setVariants(
+        produce(variants, (state) => {
+          state.splice(index, 1);
+        })
+      );
   }
 
   function handleVariantData(index: number) {
@@ -71,11 +102,30 @@ const NewProductModal: React.FC<NewProductModalProps> = ({ handleModal }) => {
     setValue('top', !top);
   }
 
+  function handleAddFile(event: ChangeEvent<HTMLInputElement>) {
+    let files: any = event.currentTarget.files;
+    let file = files[0];
+    if (!file) return;
+    setPreviewImg(URL.createObjectURL(file));
+    setValue('img', file);
+  }
+
+  function handleDeleteFile() {
+    setPreviewImg('');
+    fileInputRef.current.value = null;
+    setValue('img', null);
+  }
+
+  useEffect(() => {
+    setValue('type', 1);
+  }, []);
+
   return (
     <div className="w-full min-h-screen bg-black/30 absolute top-0 bottom-0 flex justify-end">
       <form
         className="bg-white relative w-full max-w-lg min-h-screen opacity-100 overflow-y-scroll"
         onSubmit={handleSubmit(onSubmit)}
+        encType="multipart/form-data"
       >
         <div className="w-full flex justify-end p-6">
           <button
@@ -87,15 +137,51 @@ const NewProductModal: React.FC<NewProductModalProps> = ({ handleModal }) => {
         </div>
         <div className="p-8 sm:p-10 pt-4 sm:pt-6">
           <h1 className="h1">Agregar producto</h1>
-          <div className="mt-6 mb-6">
-            <span className="label">Imagen</span>
-            <button
-              className="p-6 py-4 bg-slate-100 rounded-lg text-slate-400 text-4xl font-light border-dashed border border-gray-500 my-2"
-              type="button"
-            >
-              +
-            </button>
-            <span className="label-bottom">Tamaño recomendado 600x600</span>
+          <div className="mt-10 mb-6">
+            <span className="label mb-3">Imagen</span>
+            {!previewImg ? (
+              <label
+                className="flex items-center w-40 h-40 justify-center bg-slate-100 rounded-lg text-slate-400 text-4xl font-light border-dashed border border-gray-500 my-2 cursor-pointer"
+                htmlFor="image"
+              >
+                +
+              </label>
+            ) : (
+              <div className="flex items-center mt-2">
+                <div className="border border-dashed border-gray-500 w-40 h-40 rounded-md">
+                  <Image
+                    src={previewImg ? previewImg : '/images/landing/heart.svg'}
+                    width={200}
+                    height={200}
+                    className="object-contain"
+                  />
+                </div>
+                <label
+                  className="p-2 ml-4 rounded-full bg-slate-50 hover:bg-slate-100 cursor-pointer"
+                  htmlFor="image"
+                >
+                  <VscEdit size={23} />
+                </label>
+                <button
+                  className="p-2 ml-2 rounded-full bg-slate-50 hover:bg-slate-100"
+                  onClick={handleDeleteFile}
+                >
+                  <VscTrash size={23} />
+                </button>
+              </div>
+            )}
+
+            <input
+              type="file"
+              className="hidden"
+              id="image"
+              accept=".png, .jpg, .jpeg"
+              onChange={handleAddFile}
+              ref={fileInputRef}
+            />
+            <span className="label-bottom mt-2">
+              Tamaño recomendado 600x600
+            </span>
           </div>
           <TextInputWithLabel
             labelText="Nombre"
@@ -125,16 +211,15 @@ const NewProductModal: React.FC<NewProductModalProps> = ({ handleModal }) => {
               maxlenght: 1400,
             }}
           />
-          <TextInputWithLabel
-            labelText="Tipo"
-            errorMsg={errors.type?.message}
-            inputProps={{
-              ...register('type', {
-                required: 'Este campo es requerido',
-              }),
-              placeholder: 'Disponible',
-            }}
-          />
+          <div className="mb-4">
+            <CustomLabel text="Tipo" />
+            <CustomSelect
+              onChange={(option: number) => setValue('type', option)}
+              options={Object.keys(PRODUCT_TYPES)}
+              value={PRODUCT_TYPES[1]}
+              optionsLabel={PRODUCT_TYPES}
+            />
+          </div>
           <TextInputWithLabel
             labelText="Precio"
             bottomMessage="Precio base"
@@ -143,9 +228,11 @@ const NewProductModal: React.FC<NewProductModalProps> = ({ handleModal }) => {
               ...register('price', {
                 required: 'Este campo es requerido',
               }),
-              placeholder: '$ 5000',
+              placeholder: '5000',
             }}
-          />
+          >
+            <>$</>
+          </TextInputWithLabel>
           <TextInputWithLabel
             labelText="Categoría"
             bottomMessage="Numera tus categorías para ordenarlas como quieras"
@@ -154,7 +241,7 @@ const NewProductModal: React.FC<NewProductModalProps> = ({ handleModal }) => {
               ...register('category', {
                 required: 'Este campo es requerido',
               }),
-              placeholder: '$ 5000',
+              placeholder: 'Pantalones',
             }}
           />
           <Switch label="Destacar" selected={top} onChange={handleTopValue} />
@@ -197,6 +284,7 @@ const NewProductModal: React.FC<NewProductModalProps> = ({ handleModal }) => {
               <div className="mb-2" key={index}>
                 <VariantForm
                   handleVariant={handleVariantData(index)}
+                  handleDeleteVariant={handleDeleteVariant(index)}
                   variant={variant}
                 />
               </div>
@@ -211,9 +299,12 @@ const NewProductModal: React.FC<NewProductModalProps> = ({ handleModal }) => {
             </button>
           </div>
 
-          <button className="button mt-2" type="submit">
-            Agregar producto
-          </button>
+          <Button
+            className="button mt-2"
+            submit
+            loading={loading}
+            text="Agregar producto"
+          />
         </div>
       </form>
     </div>

@@ -4,6 +4,7 @@ import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
 } from 'react-icons/md';
+import { VscClose } from 'react-icons/vsc';
 import Checkbox from '../../../../components/form/checkbox';
 import CustomLabel from '../../../../components/form/label';
 import Switch from '../../../../components/form/switch';
@@ -16,11 +17,13 @@ import OptionItem from './optionItem';
 
 interface VariantFormProps {
   handleVariant: (variant: IVariant) => void;
+  handleDeleteVariant: () => void;
   variant: IVariant;
 }
 
 const VariantForm: React.FC<VariantFormProps> = ({
   handleVariant,
+  handleDeleteVariant,
   variant,
 }) => {
   const [variantState, setVariantState] = useState<IVariant>(variant);
@@ -62,7 +65,7 @@ const VariantForm: React.FC<VariantFormProps> = ({
 
   function handleAddOption() {
     const newOption: IVariantOption = {
-      name: '',
+      title: '',
       price: '',
       show: true,
     };
@@ -106,7 +109,13 @@ const VariantForm: React.FC<VariantFormProps> = ({
             value: variant.title,
           }}
         />
-
+        <button
+          className="bg-slate-100 hover:bg-slate-200 p-2 rounded-md ml-2"
+          type="button"
+          onClick={handleDeleteVariant}
+        >
+          <VscClose size={26} />
+        </button>
         <button
           className="bg-slate-100 hover:bg-slate-200 p-2 rounded-md ml-2"
           type="button"
@@ -124,7 +133,7 @@ const VariantForm: React.FC<VariantFormProps> = ({
           <div className="mt-4">
             <Switch
               label="Obligatorio"
-              selected={variant.optional}
+              selected={!variant.optional}
               onChange={handleOptionalForm}
             />
             <span className="label-bottom mt-2">

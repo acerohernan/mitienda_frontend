@@ -7,7 +7,7 @@ export interface IVariant {
 }
 
 export interface IVariantOption {
-  name: string;
+  title: string;
   price: string;
   show: boolean;
 }

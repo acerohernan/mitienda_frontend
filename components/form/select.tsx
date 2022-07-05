@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 
 interface SelectProps {
-  options: string[];
+  options: any[];
   optionsLabel?: any;
   value: string;
   onChange: any;
@@ -27,8 +27,8 @@ const CustomSelect: React.FC<SelectProps> = ({
     <div className="relative">
       <div className="relative text-slate-600">
         <button
-          className={`${className} appearance-none group text-start bg-slate-100 text-black font-light p-2 w-full pl-3 border-2 border-white rounded ${
-            open && 'border-green-800'
+          className={`${className} appearance-none group text-start bg-slate-100 hover:bg-slate-200 text-black font-light p-2 w-full pl-3 border-2 border-white rounded ${
+            open && 'border-green-800 bg-white'
           }`}
           onClick={handleOpen}
           type="button"
@@ -36,8 +36,8 @@ const CustomSelect: React.FC<SelectProps> = ({
           {selected ? selected : 'Selecciona un país'}
         </button>
         <FaChevronDown
-          size={22}
-          className={`absolute top-1/4 right-3 transition-all text-darkgreen400 ${
+          size={18}
+          className={`absolute top-3 right-3 transition-all text-darkgreen400 ${
             open && 'rotate-180'
           }`}
         />

@@ -21,6 +21,7 @@ export interface UpdateStoreInformationFormValues {
 
 export interface CreateProductFormValues {
   img: File | null;
+  imgUrl?: string | null;
   name: string;
   description: string;
   type: number;

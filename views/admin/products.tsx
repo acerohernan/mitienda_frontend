@@ -1,13 +1,24 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NewProductModal from './components/products/newProduct';
 
 const AdminProductsScreen = () => {
+  const [loader, setLoader] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
+  async function getProducts() {
+    setLoader(true);
+    try {
+    } catch (e) {}
+  }
 
   function handleModal(bool: boolean) {
     setShowModal(bool);
   }
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <>

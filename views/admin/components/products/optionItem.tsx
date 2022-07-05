@@ -29,7 +29,7 @@ const OptionItem: React.FC<OptionItemProps> = ({
   function handleNameChange(event: ChangeEvent<HTMLInputElement>) {
     setOptionState(
       produce(optionState, (state) => {
-        state.name = event.target.value;
+        state.title = event.target.value;
       })
     );
   }
@@ -56,8 +56,8 @@ const OptionItem: React.FC<OptionItemProps> = ({
         inputProps={{
           disabled: !option.show,
           placeholder: 'Queso cheddar',
-          value: option.name,
-          name: 'name',
+          value: option.title,
+          name: 'title',
           onChange: handleNameChange,
         }}
       />

@@ -1,8 +1,6 @@
 import { BASE_URL, fetchData } from '..';
-import {
-  CreateProductFormValues,
-  UpdateStoreInformationFormValues,
-} from './types';
+import { createProduct } from './products';
+import { UpdateStoreInformationFormValues } from './types';
 
 const headers = () => {
   const token = JSON.parse(
@@ -33,10 +31,14 @@ export const getCheckoutOptions = () =>
     headers: headers(),
   });
 
-export const createProduct = (data: CreateProductFormValues) =>
-  fetchData.post(`${BASE_URL}/store/create-product`, data, {
+export const uploadSingleImage = (img: File | null) => {
+  if (!img) return;
+  const formData = new FormData();
+  formData.append('image', img);
+  return fetchData.post(`${BASE_URL}/store/upload-image`, formData, {
     headers: headers(),
   });
+};
 
 export const updateStoreInformation = (
   data: UpdateStoreInformationFormValues
@@ -44,3 +46,7 @@ export const updateStoreInformation = (
   fetchData.put(`${BASE_URL}/store/update-information`, data, {
     headers: headers(),
   });
+
+export const products = {
+  create: createProduct,
+};
