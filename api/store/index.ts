@@ -1,5 +1,5 @@
 import { BASE_URL, fetchData } from '..';
-import { createProduct } from './products';
+import { createProduct, getAllProducts } from './products';
 import { UpdateStoreInformationFormValues } from './types';
 
 const headers = () => {
@@ -49,4 +49,5 @@ export const updateStoreInformation = (
 
 export const products = {
   create: createProduct,
+  getALl: getAllProducts,
 };

@@ -28,3 +28,8 @@ export const createProduct = async (form: CreateProductFormValues) => {
     headers: headers(),
   });
 };
+
+export const getAllProducts = () =>
+  fetchData.get(`${BASE_URL}/store/get-all-products`, {
+    headers: headers(),
+  });
