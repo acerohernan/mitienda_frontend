@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import Button from '../../components/form/button';
 import handleRequestError from '../../utils/error';
 import NewProductModal from './components/products/newProduct';
 import ProductCategory from './components/products/productCategory';
@@ -54,8 +55,30 @@ const AdminProductsScreen = () => {
             />
           </div>
         ) : null}
-        <ProductCategory />
-        <ProductCategory />
+        <div>
+          <div className="flex items-center p-2">
+            <div></div>
+            <select
+              className="bg-white text-md outline-none focus:border-none"
+              defaultValue="Categorías"
+            >
+              <option>Categorías</option>
+              <option>Ensaladas</option>
+              <option>Entradas</option>
+            </select>
+            <input type="text" className="text-field" placeholder="Buscar..." />
+            <div className="w-80">
+              <Button
+                text="Agregar producto"
+                onClick={() => handleModal(true)}
+              />
+            </div>
+          </div>
+          <div>
+            <ProductCategory />
+            <ProductCategory />
+          </div>
+        </div>
       </section>
       {showModal ? <NewProductModal handleModal={handleModal} /> : null}
     </>
